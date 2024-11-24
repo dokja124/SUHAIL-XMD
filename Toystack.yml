@@ -1,0 +1,19 @@
+version: '1.0'
+
+services:
+  bot:
+    image: mon-bot-image:latest
+    ports:
+      - "80:80"  # Remplacer par le port approprié si nécessaire
+    environment:
+      - BOT_TOKEN=your_bot_token_here
+      - DATABASE_URL=your_database_url_here
+    volumes:
+      - ./data:/app/data  # Si vous avez besoin de stocker des données persistantes
+    restart: always
+    networks:
+      - bot-network
+
+networks:
+  bot-network:
+    driver: bridge
